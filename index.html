@@ -108,6 +108,10 @@
 								<!-- 	<br><span class="medium">Courage</span><br><span>to let go of</span> <br> <span
 									class="medium">Certainties.</span>
 							</h1>-->
+								<h2 class="animate-box">Made with love by <a href="http://subrecovery.top/"
+										target="_blank" title="Free HTML5 Bootstrap Templates"
+										class="fh5co-link">subrecovery</a></h2>
+
 
 
 								<h2 class="animate-box">版本：<span id="version"></span>
@@ -115,16 +119,18 @@
 									说明：<span id="info"></span>
 								</h2>
 
-								<h2 class="animate-box">Made with love by <a href="http://subrecovery.top/"
-										target="_blank" title="Free HTML5 Bootstrap Templates"
-										class="fh5co-link">subrecovery</a></h2>
-
 
 
 								<div class="call-to-action">
 									<a href="#" class="demo animate-box"><i class="icon-power"></i> Demo</a>
-									<a href="#" class="download animate-box"><i class="icon-download"></i> Download</a>
+
+									<a href="#" class="download animate-box" data-modal="modal" id="downloadButton"><i
+											class="icon-download"></i> Download</a>
+
 								</div>
+
+
+
 						</div>
 					</div>
 				</div>
@@ -795,13 +801,36 @@
 			</div>
 		</div>
 	</div>
+	<div id="modal" class="modal">
+		<div class="modal-content">
+			<button class="close-button" id="closeModal">&times;</button> <!-- 关闭按钮 -->
+			<h2>下载信息</h2>
+			<p>版本号：<span id="modalVersion"></span></p>
+			<p>说明：<span id="modalInfo"></span></p>
+			<p>如果下载没有自动开始，请手动点击 <a id="manualDownloadLink" class="download-button" href="#">这里</a></p>
+			<p>正在自动下载，请稍候...</p>
+		</div>
+	</div>
+
+
 
 	<script>
-		//Get Version and Update info from www.subrecovery.top
+
+
+		const modal = document.getElementById('modal');
+		const closeModalButton = document.getElementById('closeModal');
+
+		closeModalButton.addEventListener('click', () => {
+			modal.style.display = 'none';
+		});
 
 		// Select the elements where you want to display the data
 		const versionElement = document.getElementById('version');
 		const infoElement = document.getElementById('info');
+		const downloadButton = document.getElementById('downloadButton');
+		const modalVersion = document.getElementById('modalVersion');
+		const modalInfo = document.getElementById('modalInfo');
+		const manualDownloadLink = document.getElementById('manualDownloadLink');
 
 		// URL for the JSON data
 		const jsonURL = 'https://www.subrecovery.top/app/new/upgrade.json';
@@ -813,12 +842,39 @@
 				// Update the elements with the data from JSON
 				versionElement.textContent = data.version;
 				infoElement.textContent = data.info;
+
+				// Add a click event listener to the download button
+				downloadButton.addEventListener('click', () => {
+					modal.style.display = 'block';
+					modalVersion.textContent = data.version;
+					modalInfo.textContent = data.info;
+
+					const apkURL = `https://www.kewu.cc/app-release-${data.version}.apk`;
+
+					// Show manual download link and set its href
+					manualDownloadLink.style.display = 'block';
+					manualDownloadLink.href = apkURL;
+
+					// Start download
+					window.location.href = apkURL;
+				});
 			})
 			.catch(error => {
 				console.error('Error fetching JSON:', error);
 			});
 
+		window.addEventListener('click', event => {
+			if (event.target === modal) {
+				modal.style.display = 'none';
+			}
+		});
+
+
 	</script>
+
+
+
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
