@@ -60,6 +60,8 @@
 </head>
 
 <body>
+
+
 	<header role="banner" id="fh5co-header">
 		<div class="container">
 			<div class="row">
@@ -108,10 +110,10 @@
 
 
 								<div class="call-to-action">
-									<a href="#" class="demo animate-box"><i class="icon-power"></i> Demo</a>
+									<!--<a href="#" class="demo animate-box"><i class="icon-power"></i> Demo</a>-->
 
 									<a href="#" class="download animate-box" data-modal="modal" id="downloadButton"><i
-											class="icon-download"></i> Download</a>
+											class="icon-download"></i> Android</a>
 
 								</div>
 
@@ -122,9 +124,26 @@
 				</div>
 			</div>
 		</div>
+
 	</section>
 
 
+	<!--弹出层样式-->
+	<div id="modal" class="modal">
+		<div class="modal-content">
+			<button class="close-button" id="closeModal">&times;</button> <!-- 关闭按钮 -->
+
+			<h2>下载信息</h2>
+			<p>当前版本：<span id="modalVersion"></span><br>
+				更新说明：<span id="modalInfo"></span></p>
+			<p>正在自动下载，请稍候...<br>安全防护需要，下载需js验证，请勿使用“云加速”功能下载<br>
+				如果下载没有自动开始，请手动点击 <br><a id="manualDownloadLink" class="download-button" href="#">这里</a></p>
+
+			<p>为我们的下载服务器<a href="https:/miko.pw/donate.html">赞助</a></p>
+
+		</div>
+	</div>
+	<!--弹出层样式END-->
 
 	<div id="fh5co-footer" role="contentinfo">
 		<div class="container">
@@ -155,6 +174,7 @@
 						</li>
 
 						<li><i class="icon-envelope"></i><a href="#">me@miko.pw</a></li>
+						<li><i class="icon-link"></i><a href="https://www.subrecovery.top">TapTap</a></li>
 						<li><i class="icon-globe"></i><a href="https://www.subrecovery.top">www.subrecovery.top</a></li>
 					</ul>
 				</div>
@@ -172,20 +192,6 @@
 		</div>
 
 
-		<div id="modal" class="modal">
-			<div class="modal-content">
-				<button class="close-button" id="closeModal">&times;</button> <!-- 关闭按钮 -->
-
-				<h2>下载信息</h2>
-				<p>版本号：<span id="modalVersion"></span><br>
-					说明：<span id="modalInfo"></span></p>
-				<p>正在自动下载，请稍候...<br>
-					如果下载没有自动开始，请手动点击 <br><a id="manualDownloadLink" class="download-button" href="#">这里</a></p>
-
-				<p>为我们的下载服务器<a href="https://miko.pw/donate.html">赞助</a></p>
-
-			</div>
-		</div>
 
 
 
